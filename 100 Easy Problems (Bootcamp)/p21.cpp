@@ -5,21 +5,23 @@ typedef long long ll;
 int main(){
     int n, cnt = 0;
     cin >> n;
-    int arr[n+1] = {0};
+    bool arr[n+1] {0};
+    vector<int> v;
     for (int i = 2; i <= sqrt(n); ++i)
     {
         if (arr[i] == 0){
-            ++cnt;
-            for (int j = i; j <= n; ++j){
-                
+            for (int j = i*i; j <= n; j += i){
+                arr[j] = 1;
             }
         }
     }
-    cout << cnt << '\n';
-    for (int i = 0; i <= n; ++i)
+    for (int i = 2; i <= n; ++i)
     {
-        if (arr[i] == 0) cout << i << ' ';
+        if (arr[i] == 0) v.push_back(i);
     }
-    
+    cout << v.size() << '\n';
+    for (int i = 0; i < v.size(); ++i){
+        cout << v[i] << ' ';
+    }
     return 0;
 }
