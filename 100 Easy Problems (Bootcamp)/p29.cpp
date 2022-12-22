@@ -11,16 +11,17 @@ int main(){
 
     int t;
     cin >> t;
-    bool ans[t] = {0};
-    for(i, 0, t-1){
-        int r,g,b;
-        cin >> r >> g >> b;
-        if (abs(r - g) > 2 || abs(g - b) > 2 || abs(b - r) > 2){
-            ans[i] = 1;
-        }
+    vector<bool> v;
+    for(i, 0, t-1)
+    {
+        int c[3];
+        cin >> c[0] >> c[1] >> c[2];
+        sort(c, c+3);
+        if (c[2] > c[0] + c[1] + 1) v.pb(false);
+        else v.pb(true);
     }
     for(i, 0, t-1){
-        cout << (ans[i] == 0 ? "Yes" : "No") << '\n';
+        cout << (v[i] == 1 ? "Yes" : "No") << '\n';
     }
     return 0;
 }
