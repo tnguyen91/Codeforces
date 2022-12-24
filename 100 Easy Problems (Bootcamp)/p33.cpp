@@ -6,6 +6,15 @@ using namespace std;
 #define rfor(i, a, b) for(int i = (a); i >= (b); --i)
 #define pb push_back
 
+int snap(int a[], int start, int end){
+    if (is_sorted(a + start, a + end)){
+        return end - start;
+    }
+    else{
+        return max(snap(a, start, (end+start)/2), snap(a, (end+start)/2, end));
+    }
+}
+
 int main(){
     ios_base::sync_with_stdio(false); cin.tie(NULL);
     int n;
@@ -15,5 +24,6 @@ int main(){
         cin >> a[i];
     }
     
+    cout << snap(a, 0, n);
     return 0;
 }
